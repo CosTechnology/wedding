@@ -207,7 +207,8 @@ $btnSubmit.addEventListener('click', async () => {
     await saveResponse(currentFamily.id, rsvpData);
     showToast('Resposta salva com sucesso! 💜');
 
-    sendWhatsAppNotifications(rsvpData);
+    // Abre WhatsApp automaticamente para o noivo correspondente
+    sendWhatsAppAuto(rsvpData);
 
     const saved = await getExistingResponse(currentFamily.id);
     showAlreadyResponded(saved ?? { responses: memberResponses as Record<string, MemberStatus> } as RsvpData);
@@ -277,8 +278,8 @@ async function saveResponse(familyId: string, data: RsvpData): Promise<void> {
   await setDoc(doc(db, 'rsvp', familyId), data, { merge: true });
 }
 
-// ---- WhatsApp: Notificar noivos sobre confirmação ----
-function sendWhatsAppNotifications(data: RsvpData): void {
+// ---- WhatsApp: Enviar automaticamente para o noivo do lado correspondente ----
+function buildWhatsAppMessage(data: RsvpData): string {
   const confirmed: string[] = [];
   const declined: string[] = [];
 
@@ -300,18 +301,28 @@ function sendWhatsAppNotifications(data: RsvpData): void {
     declined.forEach(n => { msg += `  • ${n}\n`; });
   }
 
+  return msg;
+}
+
+function sendWhatsAppAuto(data: RsvpData): void {
+  const msg = buildWhatsAppMessage(data);
   const encoded = encodeURIComponent(msg);
 
+  // Família da Ray → manda pra Ray; família do Gabriel → manda pro Gabriel
+  const phone = data.side === 'raynara' ? WHATSAPP_NUMBERS[1] : WHATSAPP_NUMBERS[0];
+  const nome = data.side === 'raynara' ? 'Raynara' : 'Gabriel';
+
+  const url = `https://wa.me/${phone}?text=${encoded}`;
+  window.open(url, '_blank');
+
+  // Mostra botão de fallback caso o popup seja bloqueado
   const container = document.createElement('div');
   container.className = 'whatsapp-notify';
   container.innerHTML = `
-    <p>📲 Avise os noivos pelo WhatsApp:</p>
+    <p>📲 Se o WhatsApp não abriu, clique abaixo:</p>
     <div class="whatsapp-buttons">
-      <a href="https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-        💬 Avisar Gabriel
-      </a>
-      <a href="https://wa.me/${WHATSAPP_NUMBERS[1]}?text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-        💬 Avisar Raynara
+      <a href="${url}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+        💬 Enviar para ${escapeHtml(nome)}
       </a>
     </div>
   `;
@@ -375,7 +386,7 @@ function showToast(msg: string): void {
 }
 
 // ---- Link do endereço: menu de apps GPS no mobile ----
-const ADDRESS = 'Rua Américo Torneiro, 468 - Jardim Mauá';
+const ADDRESS = 'Av. Américo Torneiro, 468 - Jardim Mauá';
 const COORDS = '-23.6509,-46.4611';
 const LAT = COORDS.split(',')[0];
 const LNG = COORDS.split(',')[1];
