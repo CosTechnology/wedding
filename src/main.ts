@@ -387,9 +387,9 @@ function showToast(msg: string): void {
 
 // ---- Link do endereço: menu de apps GPS no mobile ----
 const ADDRESS = 'Espaço VIP - Jardim Mauá';
-const COORDS = '-23.6509,-46.4611';
-const LAT = COORDS.split(',')[0];
-const LNG = COORDS.split(',')[1];
+const COORDS = '-23.67389,-46.43806';
+const LAT = '-23.67389';
+const LNG = '-46.43806';
 
 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 const isAndroid = /Android/i.test(navigator.userAgent);
@@ -408,7 +408,7 @@ function showMapOptions(): void {
   document.querySelector('.map-overlay')?.remove();
 
   const appleMapsLink = isIOS
-    ? `<a href="https://maps.apple.com/?q=${encodeURIComponent(ADDRESS)}&ll=${LAT},${LNG}" target="_blank" rel="noopener noreferrer" class="map-option">🍎 Apple Maps</a>`
+    ? `<a href="https://maps.apple.com/?ll=${LAT},${LNG}&q=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">🍎 Apple Maps</a>`
     : '';
 
   const overlay = document.createElement('div');
@@ -419,10 +419,10 @@ function showMapOptions(): void {
       <p>Escolha o aplicativo:</p>
       <div class="map-options">
         ${appleMapsLink}
-        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
+        <a href="https://www.google.com/maps/search/?api=1&query=${LAT},${LNG}" target="_blank" rel="noopener noreferrer" class="map-option">
           🗺️ Google Maps
         </a>
-        <a href="https://waze.com/ul?q=${encodeURIComponent(ADDRESS)}&ll=${COORDS}&navigate=yes" target="_blank" rel="noopener noreferrer" class="map-option">
+        <a href="https://waze.com/ul?ll=${LAT},${LNG}&navigate=yes" target="_blank" rel="noopener noreferrer" class="map-option">
           🚗 Waze
         </a>
         <a href="https://m.uber.com/ul/?action=setPickup&dropoff[latitude]=${LAT}&dropoff[longitude]=${LNG}&dropoff[nickname]=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
