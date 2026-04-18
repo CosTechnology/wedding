@@ -50,21 +50,21 @@
     },
     {
       "id": "familia-gabriel-09",
-      "slug": "garibaldi",
-      "familyName": "Família Garibaldi",
-      "members": ["Garibaldi", "Rose"]
+      "slug": "rosimeire",
+      "familyName": "Família Rosimeire",
+      "members": ["Rosimeire", "Garibaldi"]
     },
     {
       "id": "familia-gabriel-10",
-      "slug": "renan",
-      "familyName": "Família Renan",
-      "members": ["Renan", "Julia"]
+      "slug": "julia",
+      "familyName": "Família Julia",
+      "members": ["Julia", "Renan"]
     },
     {
       "id": "familia-gabriel-11",
       "slug": "jefferson",
-      "familyName": "Família Jefferson",
-      "members": ["Jefferson", "Zenaide"]
+      "familyName": "Família Zenaide",
+      "members": ["Zenaide", "Jefferson"]
     },
     {
       "id": "familia-gabriel-12",
@@ -80,21 +80,21 @@
     },
     {
       "id": "familia-gabriel-14",
-      "slug": "felipe",
-      "familyName": "Família Felipe",
-      "members": ["Felipe", "Michelly"]
+      "slug": "michelly",
+      "familyName": "Família Michelly",
+      "members": ["Michelly", "Felipe"]
     },
     {
       "id": "familia-gabriel-15",
-      "slug": "cesar",
-      "familyName": "Família Cesar",
-      "members": ["Cesar", "Cristine", "Lucca"]
+      "slug": "cristine",
+      "familyName": "Família Cristine",
+      "members": ["Cristine", "Cesar", "Lucca"]
     },
     {
       "id": "familia-gabriel-16",
-      "slug": "anderson",
-      "familyName": "Família Anderson",
-      "members": ["Anderson", "Isabelly"]
+      "slug": "isabelly",
+      "familyName": "Família Isabelly",
+      "members": ["Isabelly", "Anderson"]
     },
     {
       "id": "familia-gabriel-17",
@@ -110,9 +110,9 @@
     },
     {
       "id": "familia-gabriel-19",
-      "slug": "admilson",
-      "familyName": "Família Admilson",
-      "members": ["Admilson", "Margarida"]
+      "slug": "margarida",
+      "familyName": "Família Margarida",
+      "members": ["Margarida", "Admilson"]
     },
     {
       "id": "familia-gabriel-20",
