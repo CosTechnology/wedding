@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casamento Ray & Gabriel 💍</title>
+  <title>Casamento Raynara & Gabriel 💍</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
 </head>
 <body>
@@ -27,7 +27,7 @@
     <!-- HERO -->
     <header class="hero">
       <span class="rings">💍</span>
-      <h1>Ray <span class="ampersand">&</span> Gabriel</h1>
+      <h1>Raynara <span class="ampersand">&</span> Gabriel</h1>
       <p class="subtitle">Vamos nos casar!</p>
 
       <div class="event-details">
@@ -67,6 +67,11 @@
       <div class="greeting">
         <h2>Olá, <span class="family-name" id="family-name-display"></span>! 💜</h2>
         <p>Confirme a presença de cada membro da família no nosso casamento:</p>
+        <div class="deadline-notice" id="deadline-notice">
+          <span class="deadline-icon">⏳</span>
+          <p>Confirme até <strong id="deadline-date">15 de Junho de 2026</strong>.</p>
+          <p class="deadline-warning">Após essa data, entenderemos que o convite foi recusado.</p>
+        </div>
       </div>
 
       <!-- Lista de membros (preenchida via JS) -->
@@ -78,6 +83,15 @@
           Enviar Confirmação
         </button>
         <p class="submit-msg" id="submit-msg"></p>
+      </div>
+
+      <!-- Exibido quando prazo expirou sem resposta -->
+      <div class="deadline-expired" id="deadline-expired" style="display:none;">
+        <span class="error-icon">⏰</span>
+        <h3>Prazo encerrado</h3>
+        <p>O prazo para confirmação de presença se encerrou em <strong>15 de Junho de 2026</strong>.</p>
+        <p>Como não recebemos sua confirmação, entendemos que infelizmente não poderão comparecer.</p>
+        <p>Se houver algum engano, entre em contato diretamente com os noivos. 💜</p>
       </div>
 
       <!-- Exibido quando já respondeu -->
@@ -142,7 +156,7 @@
     <!-- FOOTER -->
     <footer class="footer">
       <span class="hearts">💜💍💜</span>
-      <p>Ray & Gabriel — 12 de Julho de 2026</p>
+      <p>Raynara & Gabriel — 12 de Julho de 2026</p>
       <p>Feito com amor 💜</p>
     </footer>
   </div>

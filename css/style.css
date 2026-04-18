@@ -1,5 +1,5 @@
 /* ========================================
-   CASAMENTO RAY & GABRIEL — PALETA LILÁS
+   CASAMENTO Raynara & GABRIEL — PALETA LILÁS
    ======================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
@@ -207,6 +207,72 @@ h3 {
 .rsvp-section .greeting .family-name {
   color: var(--lilac-dark);
   font-weight: 700;
+}
+
+/* ---- AVISO DE DATA LIMITE ---- */
+.deadline-notice {
+  background: linear-gradient(135deg, var(--lilac-lightest), #FFF8E1);
+  border: 1px solid var(--gold-light);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.deadline-notice .deadline-icon {
+  font-size: 1.5rem;
+}
+
+.deadline-notice p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-top: 0.3rem;
+}
+
+.deadline-notice strong {
+  color: var(--lilac-darkest);
+}
+
+.deadline-notice .deadline-warning {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 0.2rem;
+}
+
+/* ---- PRAZO EXPIRADO ---- */
+.deadline-expired {
+  text-align: center;
+  padding: 2rem;
+  background: var(--lilac-lightest);
+  border-radius: 16px;
+  border: 1px solid var(--lilac-light);
+}
+
+.deadline-expired .error-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.deadline-expired h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--lilac-darkest);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.deadline-expired p {
+  color: var(--text-medium);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.deadline-expired strong {
+  color: var(--lilac-darkest);
 }
 
 /* ---- CARDS DE MEMBROS ---- */

@@ -1,5 +1,5 @@
 // ========================================
-// Casamento Ray & Gabriel — App Principal
+// Casamento Raynara & Gabriel — App Principal
 // ========================================
 
 import { doc, getDoc, setDoc } from 'firebase/firestore';
@@ -24,10 +24,15 @@ const $btnChange = $<HTMLButtonElement>('btn-change-response');
 const $storySection = $<HTMLElement>('story-section');
 const $toast = $<HTMLDivElement>('toast');
 const $btnSeeStoryResponded = $<HTMLButtonElement>('btn-see-story-responded');
+const $deadlineExpired = $<HTMLDivElement>('deadline-expired');
+const $deadlineNotice = $<HTMLDivElement>('deadline-notice');
 
 // ---- Estado ----
 let currentFamily: Family | null = null;
 let memberResponses: MemberResponses = {};
+
+// ---- Data limite para confirmação ----
+const RSVP_DEADLINE = new Date('2026-06-15T23:59:59-03:00');
 
 // ---- Inicialização ----
 init();
@@ -94,6 +99,10 @@ function showError(): void {
   $error.style.display = 'flex';
 }
 
+function isDeadlinePassed(): boolean {
+  return new Date() > RSVP_DEADLINE;
+}
+
 function renderApp(existingResponse: RsvpData | null): void {
   $loading.style.display = 'none';
   $app.style.display = 'block';
@@ -102,9 +111,19 @@ function renderApp(existingResponse: RsvpData | null): void {
 
   if (existingResponse) {
     showAlreadyResponded(existingResponse);
+  } else if (isDeadlinePassed()) {
+    showDeadlineExpired();
   } else {
     renderMemberCards();
   }
+}
+
+function showDeadlineExpired(): void {
+  $membersList.innerHTML = '';
+  $submitArea.style.display = 'none';
+  $alreadyResponded.style.display = 'none';
+  $deadlineNotice.style.display = 'none';
+  $deadlineExpired.style.display = 'block';
 }
 
 // ---- Render dos cards de membros ----

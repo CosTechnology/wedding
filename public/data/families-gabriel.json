@@ -34,70 +34,76 @@
       "id": "familia-gabriel-06",
       "slug": "arminda",
       "familyName": "Família Arminda",
-      "members": ["Arminda", "Juan"]
+      "members": ["Arminda"]
     },
     {
       "id": "familia-gabriel-07",
-      "slug": "tia-cris",
-      "familyName": "Tia Cris",
-      "members": ["Tia Cris"]
+      "slug": "juan",
+      "familyName": "Família Juan",
+      "members": ["Juan"]
     },
     {
       "id": "familia-gabriel-08",
-      "slug": "ga",
-      "familyName": "Família Ga",
-      "members": ["Ga", "Rose"]
+      "slug": "tia-cris",
+      "familyName": "Família Maria Cristina",
+      "members": ["Maria Cristina"]
     },
     {
       "id": "familia-gabriel-09",
+      "slug": "garibaldi",
+      "familyName": "Família Garibaldi",
+      "members": ["Garibaldi", "Rose"]
+    },
+    {
+      "id": "familia-gabriel-10",
       "slug": "renan",
       "familyName": "Família Renan",
       "members": ["Renan", "Julia"]
     },
     {
-      "id": "familia-gabriel-10",
+      "id": "familia-gabriel-11",
       "slug": "jefferson",
       "familyName": "Família Jefferson",
       "members": ["Jefferson", "Zenaide"]
     },
     {
-      "id": "familia-gabriel-11",
+      "id": "familia-gabriel-12",
       "slug": "nicholas",
-      "familyName": "Nicholas",
+      "familyName": "Família Nicholas",
       "members": ["Nicholas"]
     },
     {
-      "id": "familia-gabriel-12",
+      "id": "familia-gabriel-13",
       "slug": "leonardo",
-      "familyName": "Leonardo",
+      "familyName": "Família Leonardo",
       "members": ["Leonardo"]
     },
     {
-      "id": "familia-gabriel-13",
-      "slug": "feelkz",
-      "familyName": "Família Feelkz",
-      "members": ["Feelkz", "Michelly"]
-    },
-    {
       "id": "familia-gabriel-14",
-      "slug": "cosmai",
-      "familyName": "Família Cosmai",
-      "members": ["Cesinha", "Cristine", "Lucca"]
+      "slug": "felipe",
+      "familyName": "Família Felipe",
+      "members": ["Felipe", "Michelly"]
     },
     {
       "id": "familia-gabriel-15",
+      "slug": "cesar",
+      "familyName": "Família Cesar",
+      "members": ["Cesar", "Cristine", "Lucca"]
+    },
+    {
+      "id": "familia-gabriel-16",
       "slug": "anderson",
       "familyName": "Família Anderson",
       "members": ["Anderson", "Isabelly"]
     },
     {
-      "id": "familia-gabriel-16",
-      "slug": "tia-marli",
-      "familyName": "Família Tia Marli",
-      "members": ["Tia Marli", "Amilton", "Davi"]
+      "id": "familia-gabriel-17",
+      "slug": "marli",
+      "familyName": "Família Marli",
+      "members": ["Marli", "Amilton", "Davi"]
     },
     {
-      "id": "familia-gabriel-17",
+      "id": "familia-gabriel-18",
       "slug": "apolo",
       "familyName": "Família Apolo",
       "members": ["Apolo", "Aline"]
