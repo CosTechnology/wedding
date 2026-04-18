@@ -186,6 +186,27 @@ h3 {
   font-size: 1.1rem;
 }
 
+.address-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.address-link:hover,
+.address-link:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
 /* ---- SEÇÃO RSVP ---- */
 .rsvp-section {
   padding: 2rem 1.5rem 3rem;
