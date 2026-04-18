@@ -51,20 +51,6 @@
         </a>
       </div>
 
-      <!-- MÚSICA DO CASAL -->
-      <div class="music-player">
-        <p class="music-label">🎵 Nossa música</p>
-        <p class="music-title">Choice & Azzy - Buzz Lightyear</p>
-        <div class="music-links">
-          <a href="https://www.youtube.com/watch?v=iM0c5UXB1QU" target="_blank" rel="noopener noreferrer" class="music-btn yt-btn">
-            ▶ YouTube
-          </a>
-          <a href="https://music.youtube.com/watch?v=RoUybvU5ZYM&si=Etb-LyK2sa9ev9Hh" target="_blank" rel="noopener noreferrer" class="music-btn ytm-btn">
-            🎧 YT Music
-          </a>
-        </div>
-      </div>
-
       <!-- CONTAGEM REGRESSIVA -->
       <div class="countdown" id="countdown">
         <div class="countdown-item">
@@ -205,8 +191,74 @@
     </footer>
   </div>
 
+  <!-- BOTÃO FLUTUANTE DE MÚSICA -->
+  <button class="music-fab" id="music-fab" title="Tocar nossa música">
+    <span class="music-fab-icon" id="music-fab-icon">🎵</span>
+    <span class="music-fab-label" id="music-fab-label">Tocar</span>
+  </button>
+
+  <!-- YouTube Player (hidden) -->
+  <div id="yt-player-wrap" style="position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;pointer-events:none;"></div>
+
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
+
+  <!-- YouTube IFrame API -->
+  <script>
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var bgPlayer;
+    var musicPlaying = false;
+    var playerReady = false;
+
+    function onYouTubeIframeAPIReady() {
+      bgPlayer = new YT.Player('yt-player-wrap', {
+        height: '1',
+        width: '1',
+        videoId: 'iM0c5UXB1QU',
+        playerVars: {
+          autoplay: 0,
+          loop: 1,
+          playlist: 'iM0c5UXB1QU',
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          modestbranding: 1
+        },
+        events: {
+          onReady: function() { playerReady = true; },
+          onStateChange: function(e) {
+            if (e.data === YT.PlayerState.ENDED) {
+              bgPlayer.playVideo();
+            }
+          }
+        }
+      });
+    }
+
+    document.getElementById('music-fab').addEventListener('click', function() {
+      if (!playerReady) return;
+      var icon = document.getElementById('music-fab-icon');
+      var label = document.getElementById('music-fab-label');
+      var fab = document.getElementById('music-fab');
+      if (musicPlaying) {
+        bgPlayer.pauseVideo();
+        musicPlaying = false;
+        icon.textContent = '🎵';
+        label.textContent = 'Tocar';
+        fab.classList.remove('playing');
+      } else {
+        bgPlayer.playVideo();
+        musicPlaying = true;
+        icon.textContent = '⏸️';
+        label.textContent = 'Pausar';
+        fab.classList.add('playing');
+      }
+    });
+  </script>
 
   <!-- APP -->
   <script type="module" src="/src/main.ts"></script>

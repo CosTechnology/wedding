@@ -569,7 +569,55 @@ h3 {
   object-fit: cover;
 }
 
-/* ---- MÚSICA DO CASAL ---- */
+/* ---- BOTÃO FLUTUANTE MÚSICA ---- */
+.music-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, var(--lilac-dark), var(--lilac-medium));
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(107, 63, 160, 0.4);
+  transition: all 0.3s ease;
+  animation: fabPulse 2s ease-in-out infinite;
+}
+
+.music-fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 28px rgba(107, 63, 160, 0.5);
+}
+
+.music-fab.playing {
+  animation: none;
+  background: linear-gradient(135deg, var(--lilac-darkest), var(--lilac-dark));
+}
+
+.music-fab-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.music-fab-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+@keyframes fabPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(107, 63, 160, 0.4); }
+  50% { box-shadow: 0 4px 28px rgba(107, 63, 160, 0.6); }
+}
+
+/* ---- MÚSICA DO CASAL (obsoleto, manter para links) ---- */
 .music-player {
   margin-top: 1.5rem;
   padding: 1rem 1.5rem;
