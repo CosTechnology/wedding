@@ -387,9 +387,9 @@ function showToast(msg: string): void {
 
 // ---- Link do endereço: menu de apps GPS no mobile ----
 const ADDRESS = 'Espaço VIP - Jardim Mauá';
-const COORDS = '-23.67389,-46.43806';
-const LAT = '-23.67389';
-const LNG = '-46.43806';
+const COORDS = '-23.6690812,-46.4327660';
+const LAT = '-23.6690812';
+const LNG = '-46.4327660';
 
 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 const isAndroid = /Android/i.test(navigator.userAgent);
