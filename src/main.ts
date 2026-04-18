@@ -28,7 +28,6 @@ const $deadlineNotice = $<HTMLDivElement>('deadline-notice');
 // ---- Estado ----
 let currentFamily: Family | null = null;
 let memberResponses: MemberResponses = {};
-let memberPhones: Record<string, string> = {};
 
 // ---- Data limite para confirmação ----
 const RSVP_DEADLINE = new Date('2026-05-31T23:59:59-03:00');
@@ -139,17 +138,7 @@ function renderMemberCards(): void {
     card.className = 'member-card animate-in';
     card.style.opacity = '0';
     card.innerHTML = `
-      <div class="member-info">
-        <span class="member-name">${escapeHtml(name)}</span>
-        <div class="phone-field" style="display:none;">
-          <input type="tel" 
-            class="phone-input" 
-            data-member="${escapeHtml(name)}" 
-            placeholder="(DDD) Telefone" 
-            maxlength="15"
-          >
-        </div>
-      </div>
+      <span class="member-name">${escapeHtml(name)}</span>
       <div class="member-actions">
         <button class="btn-confirm" data-member="${escapeHtml(name)}" data-action="confirmed">
           ✓ Vai
@@ -164,15 +153,6 @@ function renderMemberCards(): void {
 
   $membersList.querySelectorAll<HTMLButtonElement>('.btn-confirm, .btn-decline').forEach(btn => {
     btn.addEventListener('click', handleMemberAction);
-  });
-
-  // Máscara de telefone e listeners
-  $membersList.querySelectorAll<HTMLInputElement>('.phone-input').forEach(input => {
-    input.addEventListener('input', () => {
-      input.value = formatPhone(input.value);
-      memberPhones[input.dataset.member!] = input.value.replace(/\D/g, '');
-      updateSubmitButton();
-    });
   });
 
   updateSubmitButton();
@@ -192,52 +172,20 @@ function handleMemberAction(e: Event): void {
   card.querySelectorAll<HTMLButtonElement>('.btn-confirm, .btn-decline').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // Mostra/esconde campo telefone
-  const phoneField = card.querySelector('.phone-field') as HTMLElement;
-  if (action === 'confirmed') {
-    phoneField.style.display = '';
-  } else {
-    phoneField.style.display = 'none';
-    const input = phoneField.querySelector('.phone-input') as HTMLInputElement;
-    input.value = '';
-    delete memberPhones[member];
-  }
-
-  updatePhonePlaceholders();
   updateSubmitButton();
 }
 
 function updateSubmitButton(): void {
   const allAnswered = Object.values(memberResponses).every(v => v !== null);
-  const confirmedMembers = Object.entries(memberResponses).filter(([, s]) => s === 'confirmed').map(([n]) => n);
-  const firstConfirmed = confirmedMembers[0] || null;
-  const hasAnyConfirmed = confirmedMembers.length > 0;
-  const firstPhone = firstConfirmed ? (memberPhones[firstConfirmed] || '').replace(/\D/g, '') : '';
-  const phoneValid = !hasAnyConfirmed || firstPhone.length >= 10;
-  const canSubmit = allAnswered && phoneValid;
-  $btnSubmit.disabled = !canSubmit;
+  $btnSubmit.disabled = !allAnswered;
 
-  if (!allAnswered) {
+  if (allAnswered) {
+    $submitMsg.textContent = '';
+  } else {
     const remaining = Object.values(memberResponses).filter(v => v === null).length;
     $submitMsg.textContent = `Falta confirmar ${remaining} pessoa${remaining > 1 ? 's' : ''}`;
     $submitMsg.className = 'submit-msg';
-  } else if (!phoneValid && firstConfirmed) {
-    $submitMsg.textContent = `Informe o telefone de ${firstConfirmed} (DDD + número)`;
-    $submitMsg.className = 'submit-msg';
-  } else {
-    $submitMsg.textContent = '';
   }
-}
-
-// Atualiza placeholders: primeiro confirmado é obrigatório, demais opcionais
-function updatePhonePlaceholders(): void {
-  const confirmedMembers = Object.entries(memberResponses).filter(([, s]) => s === 'confirmed').map(([n]) => n);
-  $membersList.querySelectorAll<HTMLInputElement>('.phone-input').forEach(input => {
-    const member = input.dataset.member!;
-    if (memberResponses[member] !== 'confirmed') return;
-    const isFirstConfirmed = confirmedMembers[0] === member;
-    input.placeholder = isFirstConfirmed ? '(DDD) Telefone *' : '(DDD) Telefone (opcional)';
-  });
 }
 
 // ---- Enviar resposta ----
@@ -254,7 +202,7 @@ $btnSubmit.addEventListener('click', async () => {
     familyName: currentFamily.familyName,
     side: currentFamily.side,
     responses: { ...memberResponses } as Record<string, MemberStatus>,
-    phones: { ...memberPhones },
+    phones: {},
     respondedAt: new Date().toISOString(),
   };
 
@@ -327,7 +275,6 @@ $btnChange.addEventListener('click', () => {
   currentFamily!.members.forEach(name => {
     memberResponses[name] = null;
   });
-  memberPhones = {};
   renderMemberCards();
   $membersList.scrollIntoView({ behavior: 'smooth' });
 });
@@ -515,12 +462,4 @@ function escapeHtml(text: string): string {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
-}
-
-// ---- Máscara de telefone: (XX) XXXXX-XXXX ----
-function formatPhone(value: string): string {
-  const digits = value.replace(/\D/g, '').slice(0, 11);
-  if (digits.length <= 2) return digits;
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
