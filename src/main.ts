@@ -402,6 +402,9 @@ $addressLink.addEventListener('click', (e: Event) => {
 });
 
 function showMapOptions(): void {
+  // Remove overlay anterior se existir
+  document.querySelector('.map-overlay')?.remove();
+
   const overlay = document.createElement('div');
   overlay.className = 'map-overlay';
   overlay.innerHTML = `
@@ -418,9 +421,6 @@ function showMapOptions(): void {
         <a href="https://m.uber.com/ul/?action=setPickup&dropoff[latitude]=${COORDS.split(',')[0]}&dropoff[longitude]=${COORDS.split(',')[1]}&dropoff[nickname]=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
           🚘 Uber
         </a>
-        <a href="https://deep.99app.com/ride?lat=${COORDS.split(',')[0]}&lng=${COORDS.split(',')[1]}&title=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
-          🚕 99
-        </a>
         <a href="geo:${COORDS}?q=${encodeURIComponent(ADDRESS)}" class="map-option">
           📍 App padrão
         </a>
@@ -430,12 +430,18 @@ function showMapOptions(): void {
   `;
 
   overlay.addEventListener('click', (e: Event) => {
-    if (e.target === overlay || (e.target as HTMLElement).classList.contains('map-cancel')) {
-      overlay.remove();
-    }
+    if (e.target === overlay) overlay.remove();
   });
 
   overlay.querySelector('.map-cancel')!.addEventListener('click', () => overlay.remove());
+
+  // Fechar ao escolher uma opção
+  overlay.querySelectorAll<HTMLAnchorElement>('.map-option').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(() => overlay.remove(), 300);
+    });
+  });
+
   document.body.appendChild(overlay);
 }
 
