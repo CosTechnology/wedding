@@ -275,6 +275,44 @@ h3 {
   color: var(--lilac-darkest);
 }
 
+/* ---- WHATSAPP NOTIFY ---- */
+.whatsapp-notify {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lilac-light);
+  text-align: center;
+}
+
+.whatsapp-notify p {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.whatsapp-buttons {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background: #1DA851;
+  transform: scale(1.05);
+}
+
 /* ---- CARDS DE MEMBROS ---- */
 .members-list {
   display: flex;

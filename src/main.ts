@@ -32,7 +32,10 @@ let currentFamily: Family | null = null;
 let memberResponses: MemberResponses = {};
 
 // ---- Data limite para confirmação ----
-const RSVP_DEADLINE = new Date('2026-06-15T23:59:59-03:00');
+const RSVP_DEADLINE = new Date('2026-05-31T23:59:59-03:00');
+
+// ---- WhatsApp dos noivos ----
+const WHATSAPP_NUMBERS = ['5511986854488', '5511951426002'];
 
 // ---- Inicialização ----
 init();
@@ -206,6 +209,8 @@ $btnSubmit.addEventListener('click', async () => {
     await saveResponse(currentFamily.id, rsvpData);
     showToast('Resposta salva com sucesso! 💜');
 
+    sendWhatsAppNotifications(rsvpData);
+
     const saved = await getExistingResponse(currentFamily.id);
     showAlreadyResponded(saved ?? { responses: memberResponses as Record<string, MemberStatus> } as RsvpData);
 
@@ -284,6 +289,50 @@ $btnSeeStoryResponded.addEventListener('click', () => {
 // ---- Firebase: Salvar resposta ----
 async function saveResponse(familyId: string, data: RsvpData): Promise<void> {
   await setDoc(doc(db, 'rsvp', familyId), data, { merge: true });
+}
+
+// ---- WhatsApp: Notificar noivos sobre confirmação ----
+function sendWhatsAppNotifications(data: RsvpData): void {
+  const confirmed: string[] = [];
+  const declined: string[] = [];
+
+  Object.entries(data.responses).forEach(([name, status]) => {
+    if (status === 'confirmed') confirmed.push(name);
+    else declined.push(name);
+  });
+
+  let msg = `💍 *Confirmação de Presença*\n\n`;
+  msg += `Família: *${data.familyName}*\n`;
+  msg += `Lado: ${data.side === 'raynara' ? 'Raynara' : 'Gabriel'}\n\n`;
+
+  if (confirmed.length > 0) {
+    msg += `✅ *Confirmados (${confirmed.length}):*\n`;
+    confirmed.forEach(n => { msg += `  • ${n}\n`; });
+  }
+  if (declined.length > 0) {
+    msg += `\n❌ *Não vão (${declined.length}):*\n`;
+    declined.forEach(n => { msg += `  • ${n}\n`; });
+  }
+
+  const encoded = encodeURIComponent(msg);
+
+  const container = document.createElement('div');
+  container.className = 'whatsapp-notify';
+  container.innerHTML = `
+    <p>📲 Avise os noivos pelo WhatsApp:</p>
+    <div class="whatsapp-buttons">
+      <a href="https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBERS[0]}&text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+        💬 Avisar Gabriel
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBERS[1]}&text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+        💬 Avisar Raynara
+      </a>
+    </div>
+  `;
+
+  const existing = $alreadyResponded.querySelector('.whatsapp-notify');
+  if (existing) existing.remove();
+  $alreadyResponded.appendChild(container);
 }
 
 // ---- Firebase: Buscar resposta existente ----
