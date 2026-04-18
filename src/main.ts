@@ -386,7 +386,7 @@ function showToast(msg: string): void {
 }
 
 // ---- Link do endereço: menu de apps GPS no mobile ----
-const ADDRESS = 'Av. Américo Torneiro, 468 - Jardim Mauá';
+const ADDRESS = 'Espaço VIP - Jardim Mauá';
 const COORDS = '-23.6509,-46.4611';
 const LAT = COORDS.split(',')[0];
 const LNG = COORDS.split(',')[1];
