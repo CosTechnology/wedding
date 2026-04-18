@@ -4,109 +4,183 @@
       "id": "familia-ray-01",
       "slug": "thailiny",
       "familyName": "Família Thailiny",
-      "members": ["Thailiny", "Denis", "Cloe"]
+      "members": [
+        "Thailiny",
+        "Denis",
+        "Cloe"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-02",
       "slug": "micael",
       "familyName": "Família Micael",
-      "members": ["Micael", "Maria Eduarda", "Mirian"]
+      "members": [
+        "Micael",
+        "Maria Eduarda",
+        "Mirian"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-03",
       "slug": "suellen",
       "familyName": "Família Suellen",
-      "members": ["Suellen", "Heitor"]
+      "members": [
+        "Suellen",
+        "Heitor"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-04",
       "slug": "evellyn",
       "familyName": "Família Evellyn",
-      "members": ["Evellyn", "Giovanni"]
+      "members": [
+        "Evellyn",
+        "Giovanni"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-05",
       "slug": "maynara",
       "familyName": "Família Maynara",
-      "members": ["Maynara", "Allan", "Iris", "Miguel"]
+      "members": [
+        "Maynara",
+        "Allan",
+        "Iris",
+        "Miguel"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-06",
       "slug": "roseli",
       "familyName": "Família Roseli",
-      "members": ["Roseli"]
+      "members": [
+        "Roseli"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-07",
       "slug": "mauricio",
       "familyName": "Família Mauricio",
-      "members": ["Mauricio"]
+      "members": [
+        "Mauricio"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-08",
       "slug": "thaynara",
       "familyName": "Família Thaynara",
-      "members": ["Thaynara"]
+      "members": [
+        "Thaynara"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-09",
       "slug": "alanis",
       "familyName": "Família Alanis",
-      "members": ["Alanis", "Isaac"]
+      "members": [
+        "Alanis",
+        "Isaac"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-10",
       "slug": "marco",
       "familyName": "Família Marco",
-      "members": ["Marco", "Ana", "Pedro"]
+      "members": [
+        "Marco",
+        "Ana",
+        "Pedro"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-11",
       "slug": "maria-jose",
       "familyName": "Família Maria José",
-      "members": ["Maria José", "Maicon"]
+      "members": [
+        "Maria José",
+        "Maicon"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-12",
       "slug": "mariangela",
       "familyName": "Família Mariangela",
-      "members": ["Mariangela", "Angela", "Gabriel"]
+      "members": [
+        "Mariangela",
+        "Angela",
+        "Gabriel"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-13",
       "slug": "marcia",
       "familyName": "Família Marcia",
-      "members": ["Marcia"]
+      "members": [
+        "Marcia"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-14",
       "slug": "marcel",
       "familyName": "Família Marcel",
-      "members": ["Marcel", "Mara"]
+      "members": [
+        "Marcel",
+        "Mara"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-15",
       "slug": "alice",
       "familyName": "Família Alice",
-      "members": ["Alice"]
+      "members": [
+        "Alice"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-16",
       "slug": "camila",
       "familyName": "Família Camila",
-      "members": ["Camila", "Lucas"]
+      "members": [
+        "Camila",
+        "Lucas"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-17",
       "slug": "silvia",
       "familyName": "Família Silvia",
-      "members": ["Silvia", "Egidio"]
+      "members": [
+        "Silvia",
+        "Egidio"
+      ],
+      "phone": ""
     },
     {
       "id": "familia-ray-18",
       "slug": "larissa",
       "familyName": "Família Larissa",
-      "members": ["Larissa", "Luis", "Alice"]
+      "members": [
+        "Larissa",
+        "Luis",
+        "Alice"
+      ],
+      "phone": ""
     }
   ]
 }

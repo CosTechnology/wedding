@@ -7,6 +7,7 @@ export interface Family {
   slug: string;
   familyName: string;
   members: string[];
+  phone: string;
   side: 'raynara' | 'gabriel';
 }
 
