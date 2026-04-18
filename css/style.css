@@ -515,14 +515,10 @@ h3 {
 
 /* ---- SEÇÃO HISTÓRIA ---- */
 .story-section {
-  display: none;
-  padding: 0 1.5rem 4rem;
+  display: block;
+  padding: 0 1.5rem 2rem;
   max-width: 700px;
   margin: 0 auto;
-}
-
-.story-section.visible {
-  display: block;
 }
 
 .divider {

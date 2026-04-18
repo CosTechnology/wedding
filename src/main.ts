@@ -21,9 +21,7 @@ const $submitMsg = $<HTMLParagraphElement>('submit-msg');
 const $alreadyResponded = $<HTMLDivElement>('already-responded');
 const $responseSummary = $<HTMLDivElement>('response-summary');
 const $btnChange = $<HTMLButtonElement>('btn-change-response');
-const $storySection = $<HTMLElement>('story-section');
 const $toast = $<HTMLDivElement>('toast');
-const $btnSeeStoryResponded = $<HTMLButtonElement>('btn-see-story-responded');
 const $deadlineExpired = $<HTMLDivElement>('deadline-expired');
 const $deadlineNotice = $<HTMLDivElement>('deadline-notice');
 
@@ -213,11 +211,6 @@ $btnSubmit.addEventListener('click', async () => {
 
     const saved = await getExistingResponse(currentFamily.id);
     showAlreadyResponded(saved ?? { responses: memberResponses as Record<string, MemberStatus> } as RsvpData);
-
-    $storySection.classList.add('visible');
-    setTimeout(() => {
-      $storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 500);
   } catch (err) {
     console.error('Erro ao salvar:', err);
     $submitMsg.textContent = 'Erro ao salvar. Tente novamente.';
@@ -232,7 +225,6 @@ function showAlreadyResponded(data: RsvpData): void {
   $membersList.innerHTML = '';
   $submitArea.style.display = 'none';
   $alreadyResponded.style.display = 'block';
-  $storySection.classList.add('visible');
 
   const confirmed: string[] = [];
   const declined: string[] = [];
@@ -276,14 +268,8 @@ $btnChange.addEventListener('click', () => {
   currentFamily!.members.forEach(name => {
     memberResponses[name] = null;
   });
-  $storySection.classList.remove('visible');
   renderMemberCards();
   $membersList.scrollIntoView({ behavior: 'smooth' });
-});
-
-// ---- Botão "Ver história" (quando já respondeu) ----
-$btnSeeStoryResponded.addEventListener('click', () => {
-  $storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // ---- Firebase: Salvar resposta ----
@@ -321,10 +307,10 @@ function sendWhatsAppNotifications(data: RsvpData): void {
   container.innerHTML = `
     <p>📲 Avise os noivos pelo WhatsApp:</p>
     <div class="whatsapp-buttons">
-      <a href="https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBERS[0]}&text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+      <a href="https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
         💬 Avisar Gabriel
       </a>
-      <a href="https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBERS[1]}&text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+      <a href="https://wa.me/${WHATSAPP_NUMBERS[1]}?text=${encoded}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
         💬 Avisar Raynara
       </a>
     </div>
