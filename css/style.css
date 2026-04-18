@@ -198,6 +198,7 @@ h3 {
   font-size: 0.9rem;
   font-weight: 600;
   transition: background 0.2s, transform 0.2s;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 

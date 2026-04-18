@@ -391,10 +391,15 @@ function showToast(msg: string): void {
 // ---- Link do endereço: menu de apps GPS no mobile ----
 const ADDRESS = 'Rua Américo Torneiro, 468 - Jardim Mauá';
 const COORDS = '-23.6509,-46.4611';
+const LAT = COORDS.split(',')[0];
+const LNG = COORDS.split(',')[1];
+
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isMobile = isIOS || isAndroid;
 
 const $addressLink = $<HTMLAnchorElement>('address-link');
 $addressLink.addEventListener('click', (e: Event) => {
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   if (!isMobile) return; // desktop: segue o href normal (Google Maps)
 
   e.preventDefault();
@@ -405,6 +410,10 @@ function showMapOptions(): void {
   // Remove overlay anterior se existir
   document.querySelector('.map-overlay')?.remove();
 
+  const appleMapsLink = isIOS
+    ? `<a href="https://maps.apple.com/?q=${encodeURIComponent(ADDRESS)}&ll=${LAT},${LNG}" target="_blank" rel="noopener noreferrer" class="map-option">🍎 Apple Maps</a>`
+    : '';
+
   const overlay = document.createElement('div');
   overlay.className = 'map-overlay';
   overlay.innerHTML = `
@@ -412,17 +421,15 @@ function showMapOptions(): void {
       <h3>Abrir no mapa</h3>
       <p>Escolha o aplicativo:</p>
       <div class="map-options">
+        ${appleMapsLink}
         <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
           🗺️ Google Maps
         </a>
         <a href="https://waze.com/ul?q=${encodeURIComponent(ADDRESS)}&ll=${COORDS}&navigate=yes" target="_blank" rel="noopener noreferrer" class="map-option">
           🚗 Waze
         </a>
-        <a href="https://m.uber.com/ul/?action=setPickup&dropoff[latitude]=${COORDS.split(',')[0]}&dropoff[longitude]=${COORDS.split(',')[1]}&dropoff[nickname]=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
+        <a href="https://m.uber.com/ul/?action=setPickup&dropoff[latitude]=${LAT}&dropoff[longitude]=${LNG}&dropoff[nickname]=${encodeURIComponent(ADDRESS)}" target="_blank" rel="noopener noreferrer" class="map-option">
           🚘 Uber
-        </a>
-        <a href="geo:${COORDS}?q=${encodeURIComponent(ADDRESS)}" class="map-option">
-          📍 App padrão
         </a>
       </div>
       <button class="map-cancel">Cancelar</button>
