@@ -10,13 +10,13 @@
       "id": "familia-gabriel-02",
       "slug": "eduardo",
       "familyName": "Família Eduardo",
-      "members": ["Eduardo", "Ieda", "Cadu"]
+      "members": ["Eduardo", "Ieda"]
     },
     {
       "id": "familia-gabriel-03",
       "slug": "cintia",
       "familyName": "Família Cintia",
-      "members": ["Cintia", "Cecilia"]
+      "members": ["Cintia", "Cadu", "Cecilia"]
     },
     {
       "id": "familia-gabriel-04",
@@ -107,6 +107,18 @@
       "slug": "apolo",
       "familyName": "Família Apolo",
       "members": ["Apolo", "Aline"]
-    }
+    },
+    {
+      "id": "familia-gabriel-19",
+      "slug": "admilson",
+      "familyName": "Família Admilson",
+      "members": ["Admilson", "Margarida"]
+    },
+    {
+      "id": "familia-gabriel-20",
+      "slug": "eliane",
+      "familyName": "Família Eliane",
+      "members": ["Eliane", "Flavio", "Giovanna"]
+     }
   ]
 }

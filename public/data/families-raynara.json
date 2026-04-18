@@ -2,9 +2,9 @@
   "families": [
     {
       "id": "familia-ray-01",
-      "slug": "thaylini",
-      "familyName": "Família Thaylini",
-      "members": ["Thaylini", "Denis", "Cloe"]
+      "slug": "thailiny",
+      "familyName": "Família Thailiny",
+      "members": ["Thailiny", "Denis", "Cloe"]
     },
     {
       "id": "familia-ray-02",
@@ -20,9 +20,9 @@
     },
     {
       "id": "familia-ray-04",
-      "slug": "evellin",
-      "familyName": "Família Evellin",
-      "members": ["Evellin", "Giovanni"]
+      "slug": "evellyn",
+      "familyName": "Família Evellyn",
+      "members": ["Evellyn", "Giovanni"]
     },
     {
       "id": "familia-ray-05",
@@ -46,13 +46,13 @@
       "id": "familia-ray-08",
       "slug": "thaynara",
       "familyName": "Família Thaynara",
-      "members": ["Thaynara", "Gilberto"]
+      "members": ["Thaynara"]
     },
     {
       "id": "familia-ray-09",
-      "slug": "isaac",
-      "familyName": "Família Isaac",
-      "members": ["Isaac", "Alanys"]
+      "slug": "alanis",
+      "familyName": "Família Alanis",
+      "members": ["Alanis", "Isaac"]
     },
     {
       "id": "familia-ray-10",
@@ -70,7 +70,7 @@
       "id": "familia-ray-12",
       "slug": "mariangela",
       "familyName": "Família Mariangela",
-      "members": ["Mariangela", "Angela"]
+      "members": ["Mariangela", "Angela", "Gabriel"]
     },
     {
       "id": "familia-ray-13",
@@ -101,6 +101,12 @@
       "slug": "silvia",
       "familyName": "Família Silvia",
       "members": ["Silvia", "Egidio"]
+    },
+    {
+      "id": "familia-ray-18",
+      "slug": "larissa",
+      "familyName": "Família Larissa",
+      "members": ["Larissa", "Luis", "Alice"]
     }
   ]
 }
