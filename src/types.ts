@@ -4,6 +4,7 @@
 
 export interface Family {
   id: string;
+  slug: string;
   familyName: string;
   members: string[];
   side: 'raynara' | 'gabriel';

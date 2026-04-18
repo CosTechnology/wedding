@@ -35,15 +35,15 @@ init();
 async function init(): Promise<void> {
   startCountdown();
 
-  const familyId = getQueryParam('familia');
-  if (!familyId) {
+  const slug = getSlugFromHash();
+  if (!slug) {
     showError();
     return;
   }
 
   try {
     const families = await loadFamilies();
-    currentFamily = families.find(f => f.id === familyId) ?? null;
+    currentFamily = families.find(f => f.slug === slug) ?? null;
 
     if (!currentFamily) {
       showError();
@@ -54,7 +54,7 @@ async function init(): Promise<void> {
       memberResponses[name] = null;
     });
 
-    const existingResponse = await getExistingResponse(familyId);
+    const existingResponse = await getExistingResponse(currentFamily.id);
     renderApp(existingResponse);
   } catch (err) {
     console.error('Erro ao carregar:', err);
@@ -81,9 +81,11 @@ async function loadFamilies(): Promise<Family[]> {
   return [...rayFamilies, ...gabrielFamilies];
 }
 
-// ---- Query Params ----
-function getQueryParam(name: string): string | null {
-  return new URLSearchParams(window.location.search).get(name);
+// ---- Hash Routing: extrai slug de #/convite/slug ----
+function getSlugFromHash(): string | null {
+  const hash = window.location.hash;
+  const match = hash.match(/^#\/convite\/(.+)$/);
+  return match ? decodeURIComponent(match[1]) : null;
 }
 
 // ---- Telas ----

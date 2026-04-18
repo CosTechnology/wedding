@@ -5,7 +5,7 @@ export default defineConfig({
   base: '/wedding/',
   publicDir: 'public',
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
     emptyOutDir: true,
   },
 });

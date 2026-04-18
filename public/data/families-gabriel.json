@@ -2,86 +2,103 @@
   "families": [
     {
       "id": "familia-gabriel-01",
+      "slug": "tiago",
       "familyName": "Família Tiago",
       "members": ["Tiago", "Amanda", "Maria Alice"]
     },
     {
       "id": "familia-gabriel-02",
+      "slug": "eduardo",
       "familyName": "Família Eduardo",
       "members": ["Eduardo", "Ieda", "Cadu"]
     },
     {
       "id": "familia-gabriel-03",
+      "slug": "cintia",
       "familyName": "Família Cintia",
       "members": ["Cintia", "Cecilia"]
     },
     {
       "id": "familia-gabriel-04",
+      "slug": "armindo",
       "familyName": "Família Armindo",
       "members": ["Armindo", "Gustavo"]
     },
     {
       "id": "familia-gabriel-05",
+      "slug": "guilherme",
       "familyName": "Família Guilherme",
       "members": ["Guilherme", "Patricia"]
     },
     {
       "id": "familia-gabriel-06",
+      "slug": "arminda",
       "familyName": "Família Arminda",
       "members": ["Arminda", "Juan"]
     },
     {
       "id": "familia-gabriel-07",
+      "slug": "tia-cris",
       "familyName": "Tia Cris",
       "members": ["Tia Cris"]
     },
     {
       "id": "familia-gabriel-08",
+      "slug": "ga",
       "familyName": "Família Ga",
       "members": ["Ga", "Rose"]
     },
     {
       "id": "familia-gabriel-09",
+      "slug": "renan",
       "familyName": "Família Renan",
       "members": ["Renan", "Julia"]
     },
     {
       "id": "familia-gabriel-10",
+      "slug": "jefferson",
       "familyName": "Família Jefferson",
       "members": ["Jefferson", "Zenaide"]
     },
     {
       "id": "familia-gabriel-11",
+      "slug": "nicholas",
       "familyName": "Nicholas",
       "members": ["Nicholas"]
     },
     {
       "id": "familia-gabriel-12",
+      "slug": "leonardo",
       "familyName": "Leonardo",
       "members": ["Leonardo"]
     },
     {
       "id": "familia-gabriel-13",
+      "slug": "feelkz",
       "familyName": "Família Feelkz",
       "members": ["Feelkz", "Michelly"]
     },
     {
       "id": "familia-gabriel-14",
+      "slug": "cosmai",
       "familyName": "Família Cosmai",
       "members": ["Cesinha", "Cristine", "Lucca"]
     },
     {
       "id": "familia-gabriel-15",
+      "slug": "anderson",
       "familyName": "Família Anderson",
       "members": ["Anderson", "Isabelly"]
     },
     {
       "id": "familia-gabriel-16",
+      "slug": "tia-marli",
       "familyName": "Família Tia Marli",
       "members": ["Tia Marli", "Amilton", "Davi"]
     },
     {
       "id": "familia-gabriel-17",
+      "slug": "apolo",
       "familyName": "Família Apolo",
       "members": ["Apolo", "Aline"]
     }

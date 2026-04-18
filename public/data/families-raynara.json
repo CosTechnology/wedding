@@ -2,81 +2,97 @@
   "families": [
     {
       "id": "familia-ray-01",
+      "slug": "thaylini",
       "familyName": "Família Thaylini",
       "members": ["Thaylini", "Denis", "Cloe"]
     },
     {
       "id": "familia-ray-02",
+      "slug": "micael",
       "familyName": "Família Micael",
       "members": ["Micael", "Maria Eduarda", "Mirian"]
     },
     {
       "id": "familia-ray-03",
+      "slug": "suellen",
       "familyName": "Família Suellen",
       "members": ["Suellen", "Heitor", "Evellin", "Giovanni"]
     },
     {
       "id": "familia-ray-04",
+      "slug": "maynara",
       "familyName": "Família Maynara",
       "members": ["Maynara", "Allan", "Iris", "Miguel"]
     },
     {
       "id": "familia-ray-05",
+      "slug": "roseli",
       "familyName": "Roseli",
       "members": ["Roseli"]
     },
     {
       "id": "familia-ray-06",
+      "slug": "mauricio",
       "familyName": "Mauricio",
       "members": ["Mauricio"]
     },
     {
       "id": "familia-ray-07",
+      "slug": "thaynara",
       "familyName": "Família Thaynara",
       "members": ["Thaynara", "Harry"]
     },
     {
       "id": "familia-ray-08",
+      "slug": "isaac",
       "familyName": "Família Isaac",
       "members": ["Isaac", "Alanys"]
     },
     {
       "id": "familia-ray-09",
+      "slug": "marco",
       "familyName": "Família Marco",
       "members": ["Marco", "Ana", "Pedro"]
     },
     {
       "id": "familia-ray-10",
+      "slug": "maria-jose",
       "familyName": "Família Maria José",
       "members": ["Maria José", "Maicon"]
     },
     {
       "id": "familia-ray-11",
+      "slug": "mariangela",
       "familyName": "Família Mariangela",
       "members": ["Mariangela", "Angela"]
     },
     {
       "id": "familia-ray-12",
+      "slug": "marcia",
       "familyName": "Marcia",
       "members": ["Marcia"]
     },
     {
       "id": "familia-ray-13",
+      "slug": "marcel",
       "familyName": "Família Marcel",
       "members": ["Marcel", "Mara"]
     },
     {
       "id": "familia-ray-14",
+      "slug": "alice",
       "familyName": "Alice",
       "members": ["Alice"]
     },
     {
       "id": "familia-ray-15",
+      "slug": "camila",
       "familyName": "Família Camila",
       "members": ["Camila", "Lucas"]
     },
     {
       "id": "familia-ray-16",
+      "slug": "silvia",
       "familyName": "Família Silvia",
       "members": ["Silvia", "Egidio"]
     }
