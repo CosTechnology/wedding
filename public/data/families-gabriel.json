@@ -2,15 +2,15 @@
   "families": [
     {
       "id": "familia-gabriel-01",
-      "slug": "tiago",
-      "familyName": "Família Tiago",
-      "members": ["Tiago", "Amanda", "Maria Alice"]
+      "slug": "amanda",
+      "familyName": "Família Amanda",
+      "members": ["Amanda", "Tiago", "Maria Alice"]
     },
     {
       "id": "familia-gabriel-02",
-      "slug": "eduardo",
-      "familyName": "Família Eduardo",
-      "members": ["Eduardo", "Ieda"]
+      "slug": "ieda",
+      "familyName": "Família Ieda",
+      "members": ["Ieda", "Eduardo"]
     },
     {
       "id": "familia-gabriel-03",
@@ -26,9 +26,9 @@
     },
     {
       "id": "familia-gabriel-05",
-      "slug": "guilherme",
-      "familyName": "Família Guilherme",
-      "members": ["Guilherme", "Patricia"]
+      "slug": "patricia",
+      "familyName": "Família Patricia",
+      "members": ["Patricia", "Guilherme"]
     },
     {
       "id": "familia-gabriel-06",

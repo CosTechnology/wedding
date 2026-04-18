@@ -351,8 +351,18 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(107, 63, 160, 0.06);
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .member-card:hover {
@@ -373,6 +383,35 @@ h3 {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-dark);
+}
+
+.phone-field {
+  display: flex;
+  align-items: center;
+}
+
+.phone-input {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.4rem 0.6rem;
+  border: 1.5px solid var(--lilac-light);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--text-dark);
+  background: var(--lilac-bg);
+  transition: border-color 0.3s;
+}
+
+.phone-input::placeholder {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.phone-input:focus {
+  outline: none;
+  border-color: var(--lilac);
+  box-shadow: 0 0 0 3px rgba(107, 63, 160, 0.1);
 }
 
 .member-actions {

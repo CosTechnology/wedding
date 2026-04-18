@@ -28,6 +28,7 @@ const $deadlineNotice = $<HTMLDivElement>('deadline-notice');
 // ---- Estado ----
 let currentFamily: Family | null = null;
 let memberResponses: MemberResponses = {};
+let memberPhones: Record<string, string> = {};
 
 // ---- Data limite para confirmação ----
 const RSVP_DEADLINE = new Date('2026-05-31T23:59:59-03:00');
@@ -133,12 +134,24 @@ function renderMemberCards(): void {
   $submitArea.style.display = 'block';
   $alreadyResponded.style.display = 'none';
 
-  currentFamily!.members.forEach(name => {
+  currentFamily!.members.forEach((name, index) => {
+    const isFirst = index === 0;
     const card = document.createElement('div');
     card.className = 'member-card animate-in';
     card.style.opacity = '0';
     card.innerHTML = `
-      <span class="member-name">${escapeHtml(name)}</span>
+      <div class="member-info">
+        <span class="member-name">${escapeHtml(name)}</span>
+        <div class="phone-field">
+          <input type="tel" 
+            class="phone-input" 
+            data-member="${escapeHtml(name)}" 
+            placeholder="(DDD) Telefone${isFirst ? ' *' : ' (opcional)'}" 
+            maxlength="15"
+            ${isFirst ? 'required' : ''}
+          >
+        </div>
+      </div>
       <div class="member-actions">
         <button class="btn-confirm" data-member="${escapeHtml(name)}" data-action="confirmed">
           ✓ Vai
@@ -153,6 +166,15 @@ function renderMemberCards(): void {
 
   $membersList.querySelectorAll<HTMLButtonElement>('.btn-confirm, .btn-decline').forEach(btn => {
     btn.addEventListener('click', handleMemberAction);
+  });
+
+  // Máscara de telefone e listeners
+  $membersList.querySelectorAll<HTMLInputElement>('.phone-input').forEach(input => {
+    input.addEventListener('input', () => {
+      input.value = formatPhone(input.value);
+      memberPhones[input.dataset.member!] = input.value.replace(/\D/g, '');
+      updateSubmitButton();
+    });
   });
 
   updateSubmitButton();
@@ -177,14 +199,21 @@ function handleMemberAction(e: Event): void {
 
 function updateSubmitButton(): void {
   const allAnswered = Object.values(memberResponses).every(v => v !== null);
-  $btnSubmit.disabled = !allAnswered;
+  const firstMember = currentFamily!.members[0];
+  const firstPhone = (memberPhones[firstMember] || '').replace(/\D/g, '');
+  const phoneValid = firstPhone.length >= 10;
+  const canSubmit = allAnswered && phoneValid;
+  $btnSubmit.disabled = !canSubmit;
 
-  if (allAnswered) {
-    $submitMsg.textContent = '';
-  } else {
+  if (!allAnswered) {
     const remaining = Object.values(memberResponses).filter(v => v === null).length;
     $submitMsg.textContent = `Falta confirmar ${remaining} pessoa${remaining > 1 ? 's' : ''}`;
     $submitMsg.className = 'submit-msg';
+  } else if (!phoneValid) {
+    $submitMsg.textContent = `Informe o telefone de ${firstMember} (DDD + número)`;
+    $submitMsg.className = 'submit-msg';
+  } else {
+    $submitMsg.textContent = '';
   }
 }
 
@@ -202,6 +231,7 @@ $btnSubmit.addEventListener('click', async () => {
     familyName: currentFamily.familyName,
     side: currentFamily.side,
     responses: { ...memberResponses } as Record<string, MemberStatus>,
+    phones: { ...memberPhones },
     respondedAt: new Date().toISOString(),
   };
 
@@ -274,6 +304,7 @@ $btnChange.addEventListener('click', () => {
   currentFamily!.members.forEach(name => {
     memberResponses[name] = null;
   });
+  memberPhones = {};
   renderMemberCards();
   $membersList.scrollIntoView({ behavior: 'smooth' });
 });
@@ -461,4 +492,12 @@ function escapeHtml(text: string): string {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+// ---- Máscara de telefone: (XX) XXXXX-XXXX ----
+function formatPhone(value: string): string {
+  const digits = value.replace(/\D/g, '').slice(0, 11);
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }

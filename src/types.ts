@@ -23,5 +23,6 @@ export interface RsvpData {
   familyName: string;
   side: string;
   responses: Record<string, MemberStatus>;
+  phones: Record<string, string>;
   respondedAt: string;
 }
