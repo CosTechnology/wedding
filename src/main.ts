@@ -195,20 +195,25 @@ $btnSubmit.addEventListener('click', async () => {
   $btnSubmit.disabled = true;
   $btnSubmit.textContent = 'Enviando...';
 
-  try {
-    const rsvpData: RsvpData = {
-      familyId: currentFamily.id,
-      familyName: currentFamily.familyName,
-      side: currentFamily.side,
-      responses: { ...memberResponses } as Record<string, MemberStatus>,
-      respondedAt: new Date().toISOString(),
-    };
+  // Abre a janela do WhatsApp ANTES do await (sincrono no clique do usuário)
+  // Assim o navegador não bloqueia como popup
+  const rsvpData: RsvpData = {
+    familyId: currentFamily.id,
+    familyName: currentFamily.familyName,
+    side: currentFamily.side,
+    responses: { ...memberResponses } as Record<string, MemberStatus>,
+    respondedAt: new Date().toISOString(),
+  };
 
+  const whatsappUrl = buildWhatsAppUrl(rsvpData);
+  const whatsappWindow = window.open(whatsappUrl, '_blank');
+
+  try {
     await saveResponse(currentFamily.id, rsvpData);
     showToast('Resposta salva com sucesso! 💜');
 
-    // Abre WhatsApp automaticamente para o noivo correspondente
-    sendWhatsAppAuto(rsvpData);
+    // Mostra botão fallback caso popup tenha sido bloqueado
+    showWhatsAppFallback(rsvpData, whatsappWindow);
 
     const saved = await getExistingResponse(currentFamily.id);
     showAlreadyResponded(saved ?? { responses: memberResponses as Record<string, MemberStatus> } as RsvpData);
@@ -278,7 +283,7 @@ async function saveResponse(familyId: string, data: RsvpData): Promise<void> {
   await setDoc(doc(db, 'rsvp', familyId), data, { merge: true });
 }
 
-// ---- WhatsApp: Enviar automaticamente para o noivo do lado correspondente ----
+// ---- WhatsApp: Montar URL e enviar automaticamente ----
 function buildWhatsAppMessage(data: RsvpData): string {
   const confirmed: string[] = [];
   const declined: string[] = [];
@@ -304,18 +309,20 @@ function buildWhatsAppMessage(data: RsvpData): string {
   return msg;
 }
 
-function sendWhatsAppAuto(data: RsvpData): void {
+function buildWhatsAppUrl(data: RsvpData): string {
   const msg = buildWhatsAppMessage(data);
   const encoded = encodeURIComponent(msg);
-
-  // Família da Ray → manda pra Ray; família do Gabriel → manda pro Gabriel
   const phone = data.side === 'raynara' ? WHATSAPP_NUMBERS[1] : WHATSAPP_NUMBERS[0];
+  return `https://wa.me/${phone}?text=${encoded}`;
+}
+
+function showWhatsAppFallback(data: RsvpData, openedWindow: Window | null): void {
+  const url = buildWhatsAppUrl(data);
   const nome = data.side === 'raynara' ? 'Raynara' : 'Gabriel';
 
-  const url = `https://wa.me/${phone}?text=${encoded}`;
-  window.open(url, '_blank');
+  // Só mostra fallback se o popup foi bloqueado
+  if (openedWindow && !openedWindow.closed) return;
 
-  // Mostra botão de fallback caso o popup seja bloqueado
   const container = document.createElement('div');
   container.className = 'whatsapp-notify';
   container.innerHTML = `
