@@ -241,17 +241,18 @@ function buildMessage(familyName, slug, members) {
   const link = `${BASE_URL}${slug}`;
   const nomes = members.join(', ');
   return [
-    `Olá, ${familyName}! 🥂`,
+    `Olá, ${familyName}!`,
     ``,
     `Vocês estão convidados para o almoço de celebração do casamento de *Ray & Gabriel*!`,
     ``,
-    `📅 *12 de julho de 2026, às 13h*`,
-    `📍 Espaço VIP — Av. Américo Torneiro, 468 — Jardim Mauá`,
+    `📅 DATA: 12 de julho de 2026, às 13h`,
+    `📍 LOCAL: Espaço VIP — Av. Américo Torneiro, 468 — Jardim Mauá`,
     ``,
     `Confirme a presença de: *${nomes}*`,
-    `👉 ${link}`,
+    `Link: ${link}`,
     ``,
-    `Por favor, confirme até 31/05/2026. Obrigado! 💜`,
+    `Por favor, confirme até 31/05/2026.`,
+    `Obrigado! `,
   ].join('\n');
 }
 
