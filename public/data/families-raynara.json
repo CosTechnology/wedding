@@ -181,6 +181,26 @@
         "Alice"
       ],
       "phone": "11980914280"
+    },
+    {
+      "id": "familia-ray-19",
+      "slug": "marluce",
+      "familyName": "Família Marluce",
+      "members": [
+        "Marluce",
+        "Ricardo",
+        "Dominic"
+      ],
+      "phone": "11963790952"
+    },
+    {
+      "id": "familia-ray-20",
+      "slug": "neusa",
+      "familyName": "Família Neuza",
+      "members": [
+        "Dona Neuza"
+      ],
+      "phone": "11975324218"
     }
   ]
 }
