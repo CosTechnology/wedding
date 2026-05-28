@@ -1,0 +1,90 @@
+RAYNARA
+Família	Nome	Status
+Família Thailiny	Thailiny	Confirmado
+Família Thailiny	Denis	Confirmado
+Família Thailiny	Cloe	Confirmado
+Família Micael	Micael	Sem resposta
+Família Micael	Maria Eduarda	Sem resposta
+Família Micael	Mirian	Sem resposta
+Família Suellen	Suellen	Confirmado
+Família Suellen	Heitor	Confirmado
+Família Evellyn	Evellyn	Sem resposta
+Família Evellyn	Giovanni	Sem resposta
+Família Maynara	Maynara	Confirmado
+Família Maynara	Allan	Confirmado
+Família Maynara	Iris	Confirmado
+Família Maynara	Miguel	Confirmado
+Família Roseli	Roseli	Confirmado
+Família Mauricio	Mauricio	Confirmado
+Família Thaynara	Thaynara	Confirmado
+Família Alanis	Alanis	Confirmado
+Família Alanis	Isaac	Confirmado
+Família Marco	Marco	Sem resposta
+Família Marco	Ana	Sem resposta
+Família Marco	Pedro	Sem resposta
+Família Maria José	Maria José	Confirmado
+Família Maria José	Maicon	Confirmado
+Família Mariangela	Mariangela	Confirmado
+Família Mariangela	Angela	Confirmado
+Família Mariangela	Gabriel	Não vai
+Família Marcia	Marcia	Confirmado
+Família Marcel	Marcel	Confirmado
+Família Marcel	Mara	Confirmado
+Família Alice	Alice	Não vai
+Família Camila	Camila	Confirmado
+Família Camila	Lucas	Confirmado
+Família Silvia	Silvia	Confirmado
+Família Silvia	Egidio	Confirmado
+Família Larissa	Larissa	Sem resposta
+Família Larissa	Luis	Sem resposta
+Família Larissa	Alice	Sem resposta
+Família Marluce	Marluce	Sem resposta
+Família Marluce	Ricardo	Sem resposta
+Família Marluce	Dominic	Sem resposta
+Família Neuza	Dona Neuza	Sem resposta
+
+
+GABRIEL
+Família	Nome	Status
+Família Amanda	Amanda	Confirmado
+Família Amanda	Tiago	Confirmado
+Família Amanda	Maria Alice	Confirmado
+Família Ieda	Ieda	Confirmado
+Família Ieda	Eduardo	Confirmado
+Família Cintia	Cintia	Confirmado
+Família Cintia	Cadu	Confirmado
+Família Cintia	Cecilia	Confirmado
+Família Armindo	Armindo	Confirmado
+Família Armindo	Gustavo	Confirmado
+Família Patricia	Patricia	Confirmado
+Família Patricia	Guilherme	Confirmado
+Família Arminda	Arminda	Confirmado
+Família Juan	Juan	Confirmado
+Família Maria Cristina	Maria Cristina	Sem resposta
+Família Rosimeire	Rosimeire	Sem resposta
+Família Rosimeire	Garibaldi	Sem resposta
+Família Julia	Julia	Confirmado
+Família Julia	Renan	Confirmado
+Família Zenaide	Zenaide	Confirmado
+Família Zenaide	Jefferson	Confirmado
+Família Nicholas	Nicholas	Confirmado
+Família Leonardo	Leonardo	Confirmado
+Família Michelly	Michelly	Sem resposta
+Família Michelly	Felipe	Sem resposta
+Família Cristine	Cristine	Confirmado
+Família Cristine	Cesar	Confirmado
+Família Cristine	Lucca	Confirmado
+Família Isabelly	Isabelly	Confirmado
+Família Isabelly	Anderson	Confirmado
+Família Marli	Marli	Confirmado
+Família Marli	Amilton	Confirmado
+Família Marli	Davi	Confirmado
+Família Apolo	Apolo	Confirmado
+Família Apolo	Aline	Confirmado
+Família Margarida	Margarida	Sem resposta
+Família Margarida	Admilson	Sem resposta
+Família Margarida	Yasmin Sophia	Sem resposta
+Família Eliane	Eliane	Confirmado
+Família Eliane	Flavio	Confirmado
+Família Eliane	Giovanna	Confirmado
+Família Eliane	Gabriel	Confirmado
