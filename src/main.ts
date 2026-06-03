@@ -30,7 +30,7 @@ let currentFamily: Family | null = null;
 let memberResponses: MemberResponses = {};
 
 // ---- Data limite para confirmação ----
-const RSVP_DEADLINE = new Date('2026-05-31T23:59:59-03:00');
+const RSVP_DEADLINE = new Date('2026-06-07T23:59:59-03:00');
 
 // ---- WhatsApp dos noivos ----
 const WHATSAPP_NUMBERS = ['5511986854488', '5511951426002'];

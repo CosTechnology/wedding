@@ -251,7 +251,7 @@ function buildMessage(familyName, slug, members) {
     `Confirme a presença de: *${nomes}*`,
     `Link: ${link}`,
     ``,
-    `Por favor, confirme até 31/05/2026.`,
+    `Por favor, confirme até 07/06/2026.`,
     `Obrigado! `,
   ].join('\n');
 }
