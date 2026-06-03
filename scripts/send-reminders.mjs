@@ -6,7 +6,8 @@
 //
 // Uso:
 //   node scripts/send-reminders.mjs --all-gabriel-pending   # só pendentes do Gabriel (via Firebase)
-//   node scripts/send-reminders.mjs rosimeire michelly       # por slug
+//   node scripts/send-reminders.mjs --all-raynara-pending   # só pendentes da Raynara (via Firebase)
+//   node scripts/send-reminders.mjs rosimeire micael         # por slug (qualquer lado)
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
@@ -34,6 +35,12 @@ function loadGabriel() {
   return JSON.parse(
     readFileSync('./public/data/families-gabriel.json', 'utf-8')
   ).families.map(f => ({ ...f, side: 'gabriel' }));
+}
+
+function loadRaynara() {
+  return JSON.parse(
+    readFileSync('./public/data/families-raynara.json', 'utf-8')
+  ).families.map(f => ({ ...f, side: 'raynara' }));
 }
 
 function buildReminder(familyName, slug, members) {
@@ -79,10 +86,14 @@ async function getPendingSlugs(families) {
 async function main() {
   const args = process.argv.slice(2);
   const gabriel = loadGabriel();
+  const raynara = loadRaynara();
+  const all = [...gabriel, ...raynara];
 
   let slugs = [];
   if (args.includes('--all-gabriel-pending')) {
     slugs = await getPendingSlugs(gabriel);
+  } else if (args.includes('--all-raynara-pending')) {
+    slugs = await getPendingSlugs(raynara);
   } else {
     slugs = args.filter(a => !a.startsWith('--'));
   }
@@ -91,9 +102,9 @@ async function main() {
 
   const toSend = [];
   for (const slug of slugs) {
-    const family = gabriel.find(f => f.slug === slug);
+    const family = all.find(f => f.slug === slug);
     if (!family) {
-      console.log(`⚠️  Slug "${slug}" não encontrado na lista do Gabriel.`);
+      console.log(`⚠️  Slug "${slug}" não encontrado.`);
       continue;
     }
     toSend.push(family);
