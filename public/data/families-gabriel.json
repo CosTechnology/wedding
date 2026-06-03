@@ -200,6 +200,16 @@
         "Gabriel"
       ],
       "phone": "11956101031"
+    },
+    {
+      "id": "familia-gabriel-21",
+      "slug": "alana",
+      "familyName": "Família Alana",
+      "members": [
+        "Alana",
+        "Reginaldo"
+      ],
+      "phone": "11986250065"
     }
   ]
 }
